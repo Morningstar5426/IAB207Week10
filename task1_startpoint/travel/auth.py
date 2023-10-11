@@ -43,8 +43,7 @@ def login():
         #get the username and password from the database
         user_name = login_form.user_name.data
         password = login_form.password.data
-        user = db.session.query(User).filter(User.name == uname).first()
-
+        user = db.session.scalar(db.select(User).where(User.name==user_name))
         #if there is no user with that name
         if user is None:
             error = 'Incorrect username'#could be a security risk to give this much info away

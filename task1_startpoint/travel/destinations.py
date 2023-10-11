@@ -63,3 +63,8 @@ def comment(id):
       # and the link is created
       db.session.add(comment) 
       db.session.commit() 
+      #flashing a message which needs to be handled by the html
+      flash('Your comment has been added', 'success')  
+      # print('Your comment has been added', 'success') 
+    # using redirect sends a GET request to destination.show
+    return redirect(url_for('destination.show', id=id))
